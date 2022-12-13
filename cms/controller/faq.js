@@ -8,7 +8,7 @@ class Faq {
             raw: true,
         })
         .then((data) => {
-            res.render("cms/faqs", {
+            res.render("faqs", {
                 results: data,
                 title: "FAQ",
                 faq_active: "active",
@@ -16,7 +16,7 @@ class Faq {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Some error occured while find FAQ!");
-            res.render("cms/faqs", {
+            res.render("faqs", {
                 title: "FAQ",
                 faq_active: "active",
             });
@@ -29,7 +29,7 @@ class Faq {
         Models.faq
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/faqs/detail", {
+            res.render("faqs/detail", {
                 id: id,
                 results: data.dataValues,
                 title: "FAQ",
@@ -38,7 +38,7 @@ class Faq {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving FAQ with id=" + id);
-            res.render("cms/faqs/detail", {
+            res.render("faqs/detail", {
                 title: "FAQ",
                 faq_active: "active",
             });
@@ -52,7 +52,7 @@ class Faq {
             faq: "",
         };
 
-        res.render("cms/faqs/create", {
+        res.render("faqs/create", {
             results: data_default,
             faqs: faqs,
             title: "FAQ",
@@ -85,7 +85,7 @@ class Faq {
         Models.faq
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/faqs/edit", {
+            res.render("faqs/edit", {
                 id: id,
                 results: data.dataValues,
                 title: "FAQ",
@@ -94,7 +94,7 @@ class Faq {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving FAQ with id=" + id);
-            res.render("cms/faqs/edit", {
+            res.render("faqs/edit", {
                 title: "FAQ",
                 user_active: "active",
             });

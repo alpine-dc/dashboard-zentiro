@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 class admin {
     static loginPage(req, res) {
-        res.render('cms/auth/login', {
+        res.render('auth/login', {
             title: 'Login',
             layout: false
         });
@@ -61,7 +61,7 @@ class admin {
                 raw: true
             })
             .then((data) => {
-                res.render('cms/admin/index', {
+                res.render('admin/index', {
                     results: data,
                     title: 'Admin',
                     admin_active: 'active',
@@ -71,7 +71,7 @@ class admin {
             })
             .catch((err) => {
                 req.flash('msg_error', err.message || "Some error occured while find User Admin");
-                res.render('cms/admin/index', {
+                res.render('admin/index', {
                     title: 'Admin',
                     admin_active: 'active',
                     configuration_active: 'active',
@@ -87,7 +87,7 @@ class admin {
             role: "",
         };
 
-        res.render('cms/admin/create', {
+        res.render('admin/create', {
             results: data_default,
             roles: roles,
             title: 'Admin',
@@ -129,7 +129,7 @@ class admin {
         req.body.role = 'admin';
         if (!req.body.email) {
             req.flash('msg_error', `Email can not be empty`);
-            res.render('cms/admin/create', {
+            res.render('admin/create', {
                 title: 'Admin',
                 results: req.body,
                 admin_active: 'active',
@@ -181,7 +181,7 @@ class admin {
         Models.user
             .findByPk(req.params.id)
             .then((data) => {
-                res.render('cms/admin/edit', {
+                res.render('admin/edit', {
                     id: id,
                     results: data.dataValues,
                     // roles: roles,
@@ -192,7 +192,7 @@ class admin {
                 });
             }).catch((err) => {
                 req.flash('msg_error', err.message || "Error retrieving User Admin with id=" + id);
-                res.render('cms/admin/edit', {
+                res.render('admin/edit', {
                     title: 'Admin',
                     admin_active: 'active',
                     configuration_active: 'active',
@@ -206,7 +206,7 @@ class admin {
         Models.user
             .findByPk(id)
             .then((data) => {
-                res.render('cms/admin/changepassword_profile', {
+                res.render('admin/changepassword_profile', {
                     id: id,
                     results: data.dataValues,
                     title: 'Change Password Profile',
@@ -214,7 +214,7 @@ class admin {
                 });
             }).catch((err) => {
                 req.flash('msg_error', err.message || "Error retrieving User Admin with id=" + id);
-                res.render('cms/admin/changepassword_profile', {
+                res.render('admin/changepassword_profile', {
                     title: 'Change Password Profile',
                     profile_active: 'active'
                 });
@@ -227,7 +227,7 @@ class admin {
         // Validate request
         if (!req.body.new_password) {
             req.flash('msg_error', `new_password can not be empty`);
-            res.render('cms/admin/changepassword_profile', {
+            res.render('admin/changepassword_profile', {
                 id: id,
                 results: req.body,
                 title: 'Change Password Profile',
@@ -238,7 +238,7 @@ class admin {
 
         if (!req.body.confirm_password) {
             req.flash('msg_error', `Confirm password can not be empty`);
-            res.render('cms/admin/changepassword_profile', {
+            res.render('admin/changepassword_profile', {
                 id: id,
                 results: req.body,
                 title: 'Change Password Profile',
@@ -249,7 +249,7 @@ class admin {
 
         if (req.body.new_password != req.body.confirm_password) {
             req.flash('msg_error', `New password and confirmation password are not the same!`);
-            res.render('cms/admin/changepassword_profile', {
+            res.render('admin/changepassword_profile', {
                 id: id,
                 results: req.body,
                 title: 'Change Password Profile',
@@ -286,7 +286,7 @@ class admin {
 
         Models.user.findByPk(id)
             .then((data) => {
-                res.render('cms/admin/changepassword', {
+                res.render('admin/changepassword', {
                     id: id,
                     results: data.dataValues,
                     title: 'Admin',
@@ -296,7 +296,7 @@ class admin {
                 });
             }).catch((err) => {
                 req.flash('msg_error', err.message || "Error retrieving admin with id=" + id);
-                res.render('cms/admin/changepassword', {
+                res.render('admin/changepassword', {
                     title: 'Admin',
                     admin_active: 'active',
                     configuration_active: 'active',

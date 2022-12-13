@@ -5,7 +5,7 @@ class ContactUs {
         Models.contact_us
             .findAll({ raw: true })
             .then((data) => {
-                res.render('cms/contact-us/index', {
+                res.render('contact-us/index', {
                     results: data,
                     title: 'Contact Us',
                     contactus_active: 'Active',
@@ -13,7 +13,7 @@ class ContactUs {
             })
             .catch((err) => {
                 req.flash('msg_error', err.message || 'Some error occured while find Contact Us');
-                res.render('cms/contact-us/index', {
+                res.render('contact-us/index', {
                     title: 'Contact Us',
                     contactus_active: 'Active',
                 });

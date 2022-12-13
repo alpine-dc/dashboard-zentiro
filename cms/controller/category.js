@@ -8,7 +8,7 @@ class Category {
             raw: true,
         })
         .then((data) => {
-            res.render("cms/category", {
+            res.render("category", {
                 results: data,
                 title: "Category",
                 category_active: "active",
@@ -16,7 +16,7 @@ class Category {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Some error occured while find Category!");
-            res.render("cms/category", {
+            res.render("category", {
                 title: "Category",
                 category_active: "active",
             });
@@ -29,7 +29,7 @@ class Category {
         Models.category
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/category/detail", {
+            res.render("category/detail", {
                 id: id,
                 results: data.dataValues,
                 title: "Category",
@@ -38,7 +38,7 @@ class Category {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Category with id=" + id);
-            res.render("cms/category/detail", {
+            res.render("category/detail", {
                 title: "Category",
                 category_active: "active",
             });
@@ -52,7 +52,7 @@ class Category {
             category: "",
         };
 
-        res.render("cms/category/create", {
+        res.render("category/create", {
             results: data_default,
             categories: categories,
             title: "Category",
@@ -66,6 +66,7 @@ class Category {
         Models.category
         .create({
             name: req.body.name,
+            image: req.body.image,
             permalink: final,
             status: true,
             createdAt: new Date(),
@@ -87,7 +88,7 @@ class Category {
         Models.category
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/category/edit", {
+            res.render("category/edit", {
                 id: id,
                 results: data.dataValues,
                 title: "Category",
@@ -96,7 +97,7 @@ class Category {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Category with id=" + id);
-            res.render("cms/category/edit", {
+            res.render("category/edit", {
                 title: "Category",
                 user_active: "active",
             });
@@ -111,6 +112,7 @@ class Category {
         Models.category
         .update({
             name: req.body.name,
+            image: req.body.image,
             permalink: final,
             updatedAt: new Date()
         },{

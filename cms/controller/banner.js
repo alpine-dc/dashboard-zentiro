@@ -7,7 +7,7 @@ class Banner {
             raw: true,
         })
         .then((data) => {
-            res.render('cms/banner', {
+            res.render('banner', {
                 results: data,
                 title: 'Banner',
                 banner_active: 'active',
@@ -15,7 +15,7 @@ class Banner {
         })
         .catch((err) => {
             req.flash('msg_error', err.message || "Some error occured while find Banner!");
-            res.render('cms/banner', {
+            res.render('banner', {
                 title: "Banner",
                 banner_active: "active",
             });
@@ -29,7 +29,7 @@ class Banner {
             banner: "",
         };
 
-        res.render("cms/banner/create", {
+        res.render("banner/create", {
             results: data_default,
             banners: banners,
             title: "Banner",
@@ -38,12 +38,16 @@ class Banner {
     }
 
     static uploadBanner(req, res) {
+        const link = req.body.title.toLowerCase();
+        const final = link.split(' ').join('-');
+
         Models.banner.create({
             title: req.body.title,
             path: req.body.path,
+            permalink: final,
             createdAt: new Date(),
             updatedAt: new Date(),
-            active: 1
+            status: 'active'
         })
         .then((data) => {
             req.flash('msg_info', 'Upload Banner was succesfully');
@@ -58,7 +62,7 @@ class Banner {
         Models.banner
         .findByPk(req.params.id)
         .then((data) => {
-            res.render('cms/banner/edit', {
+            res.render('banner/edit', {
                 id: id,
                 results: data.dataValues,
                 title: "Banner",
@@ -67,7 +71,7 @@ class Banner {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Banner with id=" + id);
-            res.render("cms/banner/edit", {
+            res.render("banner/edit", {
                 title: "Banner",
                 banner_active: "active",
             });
@@ -76,14 +80,14 @@ class Banner {
 
     static updateBanner(req, res) {
         const id = req.params.id;
-
-        if (req.file) {
-            req.body.path = req.file.filename;
-        }
+        const link = req.body.title.toLowerCase();
+        const final = link.split(' ').join('-');
 
         Models.banner
             .update({
-                ...req.body,
+                title: req.body.title,
+                path: req.body.path,
+                permalink: final,
                 updatedAt: new Date(),
             },{
             where: { id: id },

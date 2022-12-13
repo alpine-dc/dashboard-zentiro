@@ -29,7 +29,7 @@ class Products {
                 }
                 allData.push(temp);
             }
-            res.render("cms/products", {
+            res.render("products", {
                 results: allData,
                 title: "Products",
                 product_active: "active",
@@ -37,7 +37,7 @@ class Products {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Some error occured while find Products!");
-            res.render("cms/products", {
+            res.render("products", {
                 title: "Products",
                 product_active: "active",
             });
@@ -62,7 +62,7 @@ class Products {
                 image: img,
             }
             allData.push(temp);
-            res.render("cms/products/detail", {
+            res.render("products/detail", {
                 id: id,
                 results: data.dataValues,
                 title: "Products",
@@ -71,7 +71,7 @@ class Products {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Products with id=" + id);
-            res.render("cms/products/detail", {
+            res.render("products/detail", {
                 title: "Products",
                 product_active: "active",
             });
@@ -84,7 +84,7 @@ class Products {
         var data_default = {
             category: "",
         };
-        res.render("cms/products/create", {
+        res.render("products/create", {
             results: data_default,
             category: categories,
             title: "Products",
@@ -141,7 +141,7 @@ class Products {
         Models.product
             .findByPk(req.params.id)
             .then((data) => {
-                res.render("cms/products/edit", {
+                res.render("products/edit", {
                     id: id,
                     role: categories,
                     images: img,
@@ -152,7 +152,7 @@ class Products {
             })
             .catch((err) => {
                 req.flash("msg_error", err.message || "Error retrieving Product with id=" + id);
-                res.render("cms/products", {
+                res.render("products", {
                     title: "Product",
                     product_active: "active",
                 });
@@ -166,7 +166,7 @@ class Products {
         Models.product
         .findByPk(req.params.id)
         .then(async (data) => {
-            res.render("cms/products/edit", {
+            res.render("products/edit", {
                 id: id,
                 results: data.dataValues,
                 category: categories,
@@ -176,7 +176,7 @@ class Products {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Product with id=" + id);
-            res.render("cms/products/edit", {
+            res.render("products/edit", {
                 title: "Products",
                 product_active: "active",
             });

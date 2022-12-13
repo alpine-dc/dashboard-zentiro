@@ -54,7 +54,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, '/views/cms'));
 // app.set('views', path.join(__dirname, 'cms/views'));
 
 app.engine(

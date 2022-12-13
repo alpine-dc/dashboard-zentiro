@@ -8,7 +8,7 @@ class TnC {
             raw: true,
         })
         .then((data) => {
-            res.render("cms/tnc", {
+            res.render("tnc", {
                 results: data,
                 title: "Term and Condition",
                 tnc_active: "active",
@@ -16,7 +16,7 @@ class TnC {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Some error occured while find Term and Condition!");
-            res.render("cms/tnc", {
+            res.render("tnc", {
                 title: "Term and Condition",
                 tnc_active: "active",
             });
@@ -29,7 +29,7 @@ class TnC {
         Models.term_condition
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/tnc/detail", {
+            res.render("tnc/detail", {
                 id: id,
                 results: data.dataValues,
                 title: "Term and Condition",
@@ -38,7 +38,7 @@ class TnC {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Term and Condition with id=" + id);
-            res.render("cms/tnc/detail", {
+            res.render("tnc/detail", {
                 title: "Term and Condition",
                 tnc_active: "active",
             });
@@ -52,7 +52,7 @@ class TnC {
             term: "",
         };
 
-        res.render("cms/tnc/create", {
+        res.render("tnc/create", {
             results: data_default,
             tnc: tnc,
             title: "Term and Condition",
@@ -84,7 +84,7 @@ class TnC {
         Models.term_condition
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/tnc/edit", {
+            res.render("tnc/edit", {
                 id: id,
                 results: data.dataValues,
                 title: "Term and Condition",
@@ -93,7 +93,7 @@ class TnC {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving Term and Condition with id=" + id);
-            res.render("cms/tnc/edit", {
+            res.render("tnc/edit", {
                 title: "Term and Condition",
                 user_active: "active",
             });

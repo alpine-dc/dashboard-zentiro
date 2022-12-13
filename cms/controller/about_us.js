@@ -8,7 +8,7 @@ class AboutUs {
             raw: true,
         })
         .then((data) => {
-            res.render("cms/about-us", {
+            res.render("about-us", {
                 results: data,
                 title: "About Us",
                 about_active: "active",
@@ -16,7 +16,7 @@ class AboutUs {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Some error occured while find About Us!");
-            res.render("cms/about-us", {
+            res.render("about-us", {
                 title: "About Us",
                 about_active: "active",
             });
@@ -29,7 +29,7 @@ class AboutUs {
         Models.about_us
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/about-us/detail", {
+            res.render("about-us/detail", {
                 id: id,
                 results: data.dataValues,
                 title: "About Us",
@@ -38,7 +38,7 @@ class AboutUs {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving About Us with id=" + id);
-            res.render("cms/about-us/detail", {
+            res.render("about-us/detail", {
                 title: "About Us",
                 about_active: "active",
             });
@@ -52,7 +52,7 @@ class AboutUs {
             aboutUs: "",
         };
 
-        res.render("cms/about-us/create", {
+        res.render("about-us/create", {
             results: data_default,
             abouts: abouts,
             title: "About Us",
@@ -83,7 +83,7 @@ class AboutUs {
         Models.about_us
         .findByPk(req.params.id)
         .then((data) => {
-            res.render("cms/about-us/edit", {
+            res.render("about-us/edit", {
                 id: id,
                 results: data.dataValues,
                 title: "About Us",
@@ -92,7 +92,7 @@ class AboutUs {
         })
         .catch((err) => {
             req.flash("msg_error", err.message || "Error retrieving About Us with id=" + id);
-            res.render("cms/about-us/edit", {
+            res.render("about-us/edit", {
                 title: "About Us",
                 about_active: "active",
             });

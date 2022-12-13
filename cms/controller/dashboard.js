@@ -1,6 +1,6 @@
 class Dashboard {
     static home(req, res) {
-        res.render('cms/home/index', {
+        res.render('home/index', {
             title: 'Home',
             home_active: 'active'
         });

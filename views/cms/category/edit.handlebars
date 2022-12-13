@@ -33,6 +33,13 @@
               <label for="permalink">Permalink</label>
               <input type="permalink" name="permalink" class="form-control" id="permalink" placeholder="permalink" value="{{results.permalink}}" readonly />
             </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <p>
+                  <img src="{{results.image}}" style="max-height:200px;">
+              </p>
+              <input type="text" name="image" class="form-control" id="image" placeholder="image" value="{{results.path}}" required />
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
