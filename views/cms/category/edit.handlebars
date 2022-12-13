@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">
+            <b>Edit</b>
+            <legend>Category</legend>
+          </h1>
+        </div>
+        <!-- /.card-header -->
+        <form role="form" id="quickForm" action="/category/edit/{{id}}" method="POST">
+          <div class="card-body">
+            {{#if messages.msg_info}}
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Success!</h5>
+                {{messages.msg_info}}
+              </div>
+            {{/if}}
+            {{#if messages.msg_error}}
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                {{messages.msg_error}}
+              </div>
+            {{/if}}
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input name="name" class="form-control" id="name" placeholder="name" value="{{results.name}}" required />
+            </div>
+            <div class="form-group">
+              <label for="permalink">Permalink</label>
+              <input type="permalink" name="permalink" class="form-control" id="permalink" placeholder="permalink" value="{{results.permalink}}" readonly />
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <input type="hidden" name="_method" value="POST" />
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" href="/category">
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container-fluid -->

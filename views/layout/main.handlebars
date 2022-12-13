@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dyy6ibm2j/image/upload/v1668624665/zentiro/favicon_b35htb.png">
+  <title>{{title}} - Admin Zentiro</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    .labelstatus {
+      color: white;
+      padding: 8px;
+      font-family: Arial;
+    }
+
+    .successstatus {
+      background-color: #4CAF50;
+    }
+
+    /* Green */
+    .infostatus {
+      background-color: #2196F3;
+    }
+
+    /* Blue */
+    .warningstatus {
+      background-color: #ff9800;
+    }
+
+    /* Orange */
+    .danger {
+      background-color: #f44336;
+    }
+
+    /* Red */
+    .otherstatus {
+      background-color: #e7e7e7;
+      color: black;
+    }
+
+    /* Gray */
+  </style>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="/adminlte/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="/adminlte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="/adminlte/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Select2 -->
+  <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="/adminlte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- InputMask -->
+  <script src="/adminlte/plugins/moment/moment.min.js"></script>
+  <script src="/adminlte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="/adminlte/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="/adminlte/plugins/sparklines/sparkline.js"></script>
+  <!-- JQVMap -->
+  <script src="/adminlte/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="/adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="/adminlte/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="/adminlte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="/adminlte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- Summernote -->
+  <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- DataTables -->
+  <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/adminlte/dist/js/adminlte.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/adminlte/dist/js/demo.js"></script>
+  <!-- ChartJS -->
+  {{!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> --}}
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        {{!-- {{#checkpermissionlevelOrAdminCanDoThisAction session.permissionLevel 1}} --}}
+        {{!-- <li class="nav-item d-none d-sm-inline-block">
+          <a href="/profile" class="nav-link {{ profile_active }}">Profile</a>
+        </li> --}}
+        {{!-- {{/checkpermissionlevelOrAdminCanDoThisAction}} --}}
+
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+      </ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="/home" class="brand-link">
+        <img src="https://res.cloudinary.com/dyy6ibm2j/image/upload/v1668534286/zentiro/Logo_Zentiro1_aco2tm.png" style="max-width:100px; max-height:100px;"
+          style="opacity: .8">
+        <span class="brand-text font-weight-light">Dashboard</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="/img/admin.jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="/profile" class="d-block">{{session.username}}</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+            {{!-- {{#checkpermissionlevelOrAdminCanDoThisAction session.permissionLevel 1}} --}}
+            <li class="nav-item">
+              <a href="/home" class="nav-link {{ home_active }}">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin" class="nav-link {{ admin_active }}">
+                <i class="fas fa-user-cog nav-icon"></i>
+                <p>Admin User</p>
+              </a>
+            </li>
+            {{!-- <li class="nav-item">
+              <a href="/student" class="nav-link {{ student_active }}">
+                <i class="fas fa-user-cog nav-icon"></i>
+                <p>Student</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/document" class="nav-link {{ document_active }}">
+                <i class="fas fa-file-upload nav-icon"></i>
+                <p>Upload Sertificate</p>
+              </a>
+            </li> --}}
+            <li class="nav-item">
+              <a href="/about-us" class="nav-link {{ aboutus_active }}">
+                <i class="nav-icon fas fa-building"></i>
+                <p>
+                  About Us
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/banner" class="nav-link {{ banner_active }}">
+                <i class="fas fa-ad nav-icon"></i>
+                <p>
+                  Banner
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/category" class="nav-link {{ category_active }}">
+                <i class="fas fa-tags nav-icon"></i>
+                <p>
+                  Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact-us" class="nav-link {{ contactus_active }}">
+                <i class="fas fa-address-book nav-icon"></i>
+                <p>
+                  Contact Us
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/faqs" class="nav-link {{ faq_active }}">
+                <i class="far fa-comments nav-icon"></i>
+                <p>
+                  FAQ
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/products" class="nav-link {{ product_active }}">
+                <i class="fas fa-bath nav-icon"></i>
+                <p>
+                  Product
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/tnc" class="nav-link {{ tnc_active }}">
+                <i class="fas fa-file-alt nav-icon"></i>
+                <p>
+                  Term & Condition
+                </p>
+              </a>
+            </li>
+            {{!-- {{/checkpermissionlevelOrAdminCanDoThisAction}} --}}
+            {{!-- {{#checkpermissionlevelOrAdminCanDoThisAction session.permissionLevel 3}}
+            <li class="nav-item">
+              <a href="/dashboard" class="nav-link {{ dashboard_active }}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            {{/checkpermissionlevelOrAdminCanDoThisAction}} --}}
+            {{!-- {{#checkpermissionlevelOrAdminCanDoThisAction session.permissionLevel 3}} --}}
+			      {{!-- <li class="nav-item has-treeview {{ userVerification_menu_open }}">
+              <a href="#" class="nav-link {{ userVerification_dropdown_active }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Address Verification
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/address-verification/active" class="nav-link {{ verification_verified_active }}">
+                    <i class="fas fa-check nav-icon"></i>
+                    <p>Active</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/address-verification/inactive" class="nav-link {{ verification_unverified_active }}">
+                    <i class="fas fa-times nav-icon"></i>
+                    <p>Inactive</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview {{ partnership_menu_open }}">
+              <a href="#" class="nav-link {{ partnership_dropdown_active }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Partnership
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/partnership-content" class="nav-link {{ partnership_content_active }}">
+                    <i class="fas fa-file nav-icon"></i>
+                    <p>Content</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/partnership-benefit" class="nav-link {{ partnership_benefit_active }}">
+                    <i class="fas fa-tags nav-icon"></i>
+                    <p>Benefit</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/mitra" class="nav-link {{ partnership_list_active }}">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                        List
+                        </p>
+                    </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview {{ career_menu_open }}">
+              <a href="#" class="nav-link {{ career_dropdown_active }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>Career<i class="right fas fa-angle-left"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/career-content" class="nav-link {{ careerContent_active }}">
+                        <i class="nav-icon fa fa-graduation-cap"></i>
+                        <p>Content</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/career-list" class="nav-link {{ careerList_active }}">
+                        <i class="nav-icon fas fa-briefcase"></i>
+                        <p>List</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/career-request" class="nav-link {{ careerRequest_active }}">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>Request</p>
+                    </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview {{ location_menu_open }}">
+              <a href="#" class="nav-link {{ location_dropdown_active }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Location
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/location/region" class="nav-link {{ location_region_active }}">
+                    <i class="fas fa-map-marker nav-icon"></i>
+                    <p>Region</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/location/city" class="nav-link {{ location_city_active }}">
+                    <i class="fas fa-bookmark nav-icon"></i>
+                    <p>City</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/location" class="nav-link {{ location_list_active }}">
+                    <i class="fas fa-user-cog nav-icon"></i>
+                    <p>List</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview {{ configuration_menu_open }}">
+              <a href="#" class="nav-link {{ configuration_active }}">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Configuration
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/cms_user" class="nav-link {{ cms_user_active }}">
+                    <i class="fas fa-user-cog nav-icon"></i>
+                    <p>CMS User</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/user" class="nav-link {{ user_active }}">
+                    <i class="fas fa-user-cog nav-icon"></i>
+                    <p>User</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/career-location" class="nav-link {{ careerLocation_active }}">
+                    <i class="fas fa-map-marker nav-icon"></i>
+                    <p>Career Location</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/department" class="nav-link {{ department_active }}">
+                    <i class="fas fa-bookmark nav-icon"></i>
+                    <p>Department</p>
+                  </a>
+                </li>
+              </ul>
+            </li> --}}
+            {{!-- {{/checkpermissionlevelOrAdminCanDoThisAction}} --}}
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              {{!-- <h1 class="m-0 text-dark">{{title}}</h1> --}}
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">{{title}}</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        {{{ body }}}
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+      {{!-- <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.5
+      </div> --}}
+      <strong>Copyright &copy; 2022 Zentiro</strong> All rights
+      reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+
+  <script>
+    $(function () {
+      $("#table_general1").DataTable({
+        "scrollX": true,
+      });
+      $('#table_general2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+      $('.textarea').summernote({
+        height: 250,
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Source Sans Pro' ,'Open Sans'],
+        fontNamesIgnoreCheck: ['Open Sans'],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24','36'],
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          ['fontname', ['fontname']],
+          ['fontsize', ['fontsize']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph', 'height']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+        callbacks: {
+            onpaste: function (e) {
+                var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                e.preventDefault();
+                setTimeout(function () {
+                    document.execCommand('insertText', false, bufferText);
+                    $(this).parent().siblings('.summernote').destroy();
+                }, 10);
+            }
+        }
+      });
+      //$('.textarea').summernote('removeFormat');
+      //$('.textarea').summernote('fontName', 'Open Sans');
+    });
+    $(document).ready(function () {
+      bsCustomFileInput.init();
+    });
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function (event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function () {
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+  </script>
+</body>
+
+</html>

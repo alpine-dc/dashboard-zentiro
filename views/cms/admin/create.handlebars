@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">
+                        <b>Create</b>
+                        <legend>CMS User</legend>
+                    </h1>
+                </div>
+                <!-- /.card-header -->
+                <form role="form" id="quickForm" action="/cms_user/create" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="card-body">
+                        {{#if messages.msg_info}}
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-check"></i> Success!</h5>
+                            {{messages.msg_info}}
+                        </div>
+                        {{/if}}
+                        {{#if messages.msg_error}}
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                            {{messages.msg_error}}
+                        </div>
+                        {{/if}}
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input name="username" class="form-control" id="username" placeholder="username"
+                                value="{{results.username}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password"
+                                placeholder="password" value="{{results.password}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="email"
+                                value="{{results.email}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Photo</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" accept="image/*" name="photo"
+                                        id="photo" placeholder="photo" required>
+                                    <label class="custom-file-label" for="photo">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select name="role" class="form-control select2bs4" id="role" style="width: 100%;" required>
+                                {{#select results.role}}
+                                <option value="" disabled selected>Select a role</option>
+                                {{#each roles}}
+                                <option value="{{slug}}">{{ role_name }}</option>
+                                {{/each}}
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn btn-secondary" href="/cms_user">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
